@@ -1,0 +1,51 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.wizard_adjust_base.check,taxes:"
+msgid "Taxes"
+msgstr "Impostos"
+
+msgctxt "field:account.invoice.wizard_adjust_base.line,base:"
+msgid "Base"
+msgstr "Base"
+
+msgctxt "field:account.invoice.wizard_adjust_base.line,tax:"
+msgid "Tax"
+msgstr "Impost"
+
+msgctxt "field:account.invoice.wizard_adjust_base.start,tax_lines:"
+msgid "Tax Lines"
+msgstr "Línies d'impost"
+
+msgctxt "model:ir.action,name:wizard_adjust_base"
+msgid "Adjust Base"
+msgstr "Ajustar Base"
+
+msgctxt "model:ir.model.button,string:button_adjust_base"
+msgid "Adjust Base"
+msgstr "Ajustar Base"
+
+msgctxt "model:account.invoice.wizard_adjust_base.check,name:"
+msgid "Adjust Base Check"
+msgstr "Ajustar Base Comprovació"
+
+msgctxt "model:account.invoice.wizard_adjust_base.line,name:"
+msgid "Adjust Base Line"
+msgstr "Ajustar Base Linia"
+
+msgctxt "model:account.invoice.wizard_adjust_base.start,name:"
+msgid "Adjust Base Start"
+msgstr "Ajustar Base Inici"
+
+msgctxt "wizard_button:account.invoice.wizard_adjust_base,check,end:"
+msgid "Ok"
+msgstr "Ok"
+
+msgctxt "wizard_button:account.invoice.wizard_adjust_base,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.invoice.wizard_adjust_base,start,modify_:"
+msgid "Modify"
+msgstr "Modificar"

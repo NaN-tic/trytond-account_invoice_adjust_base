@@ -1,0 +1,5 @@
+<data>
+    <xpath expr="/form/group[@id='buttons']" position="inside">
+        <button name="adjust_base"/>
+    </xpath>
+</data>

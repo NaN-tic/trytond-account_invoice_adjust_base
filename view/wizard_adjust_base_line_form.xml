@@ -1,0 +1,6 @@
+<form>
+    <label name="tax"/>
+    <field name="tax"/>
+    <label name="base"/>
+    <field name="base"/>
+</form>

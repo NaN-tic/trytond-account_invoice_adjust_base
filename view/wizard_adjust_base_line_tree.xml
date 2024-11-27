@@ -1,0 +1,4 @@
+<tree editable="1">
+    <field name="tax"/>
+    <field name="base"/>
+</tree>

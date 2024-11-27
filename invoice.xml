@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.model.button" id="button_adjust_base">
+            <field name="model">account.invoice</field>
+            <field name="name">adjust_base</field>
+            <field name="string">Adjust Base</field>
+        </record>
+
+        <record model="ir.ui.view" id="invoice_view_form">
+            <field name="model">account.invoice</field>
+            <field name="inherit" ref="account_invoice.invoice_view_form"/>
+            <field name="name">invoice_form</field>
+        </record>
+        <record model="ir.ui.view" id="wizard_adjust_base_start_view_form">
+            <field name="model">account.invoice.wizard_adjust_base.start</field>
+            <field name="name">wizard_adjust_base_start_form</field>
+            <field name="type">form</field>
+        </record>
+        <record model="ir.ui.view" id="wizard_adjust_base_check_view_form">
+            <field name="model">account.invoice.wizard_adjust_base.check</field>
+            <field name="name">wizard_adjust_base_check_form</field>
+            <field name="type">form</field>
+        </record>
+        <record model="ir.ui.view" id="wizard_adjust_base_line_view_form">
+            <field name="model">account.invoice.wizard_adjust_base.line</field>
+            <field name="name">wizard_adjust_base_line_form</field>
+            <field name="type">form</field>
+        </record>
+        <record model="ir.ui.view" id="wizard_adjust_base_line_view_tree">
+            <field name="model">account.invoice.wizard_adjust_base.line</field>
+            <field name="name">wizard_adjust_base_line_tree</field>
+            <field name="type">tree</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_adjust_base">
+            <field name="name">Adjust Base</field>
+            <field name="wiz_name">account.invoice.wizard_adjust_base</field>
+            <field name="model">account.invoice</field>
+        </record>
+
+    </data>
+</tryton>
