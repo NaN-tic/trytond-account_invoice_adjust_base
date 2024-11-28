@@ -1,8 +1,8 @@
+from collections import defaultdict
 from trytond.pool import PoolMeta, Pool
 from trytond.model import fields, ModelView
 from trytond.pyson import Eval
 from trytond.wizard import Wizard, StateView, StateTransition, Button
-
 
 
 class Invoice(metaclass=PoolMeta):
@@ -24,6 +24,10 @@ class Invoice(metaclass=PoolMeta):
     def adjust_base(cls, invoices):
         pass
 
+class Line(metaclass=PoolMeta):
+    __name__ = 'account.invoice.line'
+
+    adjust_base = fields.Boolean('Adjust Base')
 
 class AdjustBase(Wizard):
     'Adjust base'
@@ -45,20 +49,33 @@ class AdjustBase(Wizard):
         AccountConfiguration = pool.get('account.configuration')
         invoice = self.record
 
+        bases = defaultdict(lambda: 0)
+
+        for line in invoice.taxes:
+            bases[line.tax.id] -= line.base
         for line in self.start.tax_lines:
-            for tax_line in invoice.taxes:
-                if tax_line.tax == line.tax:
-                    if tax_line.base != line.base:
-                        amount = line.base - tax_line.base
-                        new_line = InvoiceLine()
-                        new_line.invoice = invoice
-                        new_line.unit_price = amount
-                        new_line.type = 'line'
-                        new_line.account = AccountConfiguration(1).default_category_account_expense
-                        new_line.quantity = 1
-                        new_line.taxes = [line.tax]
-                        new_line.save()
-                    break
+            if bases.get(line.tax.id):
+                bases[line.tax.id] += line.base
+
+        existent_adjust_lines_dict = {line.taxes[0].id:
+            line for line in invoice.lines if line.adjust_base}
+        for tax, base in bases.items():
+            if existent_adjust_lines_dict.get(tax):
+                adjust_line = existent_adjust_lines_dict[tax]
+                adjust_line.unit_price += base
+            else:
+                adjust_line = InvoiceLine()
+                adjust_line.invoice = invoice
+                adjust_line.type = 'line'
+                adjust_line.unit_price = base
+                adjust_line.account = (
+                    AccountConfiguration(1).default_category_account_expense)
+                adjust_line.quantity = 1
+                adjust_line.taxes = [line.tax]
+                adjust_line.adjust_base = True
+            adjust_line.save()
+            if adjust_line.unit_price == 0:
+                InvoiceLine.delete([adjust_line])
         invoice.update_taxes()
         invoice.save()
         return 'check'
