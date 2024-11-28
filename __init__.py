@@ -7,6 +7,7 @@ from . import invoice
 def register():
     Pool.register(
         invoice.Invoice,
+        invoice.Line,
         invoice.AdjustBaseStart,
         invoice.AdjustBaseLine,
         invoice.AdjustBaseCheck,
