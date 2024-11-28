@@ -34,6 +34,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">wizard_adjust_base_line_tree</field>
             <field name="type">tree</field>
         </record>
+        <record model="ir.ui.view" id="account_invoice_tax_adjust_base_list">
+            <field name="model">account.invoice.tax</field>
+            <field name="name">tax_adjust_base_list</field>
+            <field name="type">tree</field>
+        </record>
 
         <record model="ir.action.wizard" id="wizard_adjust_base">
             <field name="name">Adjust Base</field>

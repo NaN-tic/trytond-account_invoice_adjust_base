@@ -39,9 +39,10 @@ class AdjustBase(Wizard):
         ])
     check = StateView('account.invoice.wizard_adjust_base.check',
             'account_invoice_adjust_base.wizard_adjust_base_check_view_form', [
-        Button('Ok', 'end', 'tryton-ok'),
+        Button('Ok', 'check_', 'tryton-ok'),
     ])
     modify_ = StateTransition()
+    check_ = StateTransition()
 
     def transition_modify_(self):
         pool = Pool()
@@ -79,6 +80,12 @@ class AdjustBase(Wizard):
         invoice.update_taxes()
         invoice.save()
         return 'check'
+
+    def transition_check_(self):
+        pool = Pool()
+        InvoiceTax = pool.get('account.invoice.tax')
+        InvoiceTax.save(self.check.taxes)
+        return 'end'
 
     def default_start(self, fields):
         invoice = self.record

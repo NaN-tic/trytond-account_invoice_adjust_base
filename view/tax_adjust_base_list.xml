@@ -1,0 +1,5 @@
+<tree editable="1">
+    <field name="description" expand="1" readonly="1"/>
+    <field name="base" readonly="1"/>
+    <field name="amount"/>
+</tree>
