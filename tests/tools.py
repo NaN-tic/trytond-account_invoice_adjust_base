@@ -53,10 +53,10 @@ def setup():
     vars.payable = accounts['payable']
 
     # Get taxes
-    vars.customer_vat_10 = get_tax('iva_rep_10', vars.company)
-    vars.customer_vat_21 = get_tax('iva_rep_21', vars.company)
-    vars.supplier_vat_10 = get_tax('iva_sop_10', vars.company)
-    vars.supplier_vat_21 = get_tax('iva_sop_21', vars.company)
+    vars.customer_vat_10 = get_tax('iva_rep_10', vars.company, vars.config)
+    vars.customer_vat_21 = get_tax('iva_rep_21', vars.company, vars.config)
+    vars.supplier_vat_10 = get_tax('iva_sop_10', vars.company, vars.config)
+    vars.supplier_vat_21 = get_tax('iva_sop_21', vars.company, vars.config)
 
     # Analytic accounts
     AnalyticAccount = Model.get('analytic_account.account')
