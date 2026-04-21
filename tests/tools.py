@@ -189,7 +189,7 @@ def setup():
     # Set Purchase Configuration
     PurchaseConfig = Model.get('purchase.configuration')
     vars.purchase_config = PurchaseConfig(1)
-    vars.purchase_config.purchase_invoice_method = 'shipment'
+    vars.purchase_config.purchase_invoice_method = 'fulfillment'
     vars.purchase_config.pending_invoice_account = vars.pending_payable
     vars.purchase_config.supply_period = dt.timedelta(days=30)
     vars.purchase_config.save()
